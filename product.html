@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <title>{NAME}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: linear-gradient(rgba(138, 225, 101, 0.788), rgba(96, 247, 32, 0.788));
+            background-repeat: no-repeat;
+            font-family: 'Raleway', sans-serif;
+            line-height: 1.6;
+            letter-spacing: 1px;
+        }
+
+        .product-card>* {
+            margin-bottom: 2rem;
+        }
+
+        .product-card {
+            background-color: white;
+            padding: 1rem 5rem;
+            border-radius: 2rem;
+            max-width: 40rem;
+        }
+
+        .image {
+            font-size: 5rem;
+        }
+
+        .product {
+            padding: 4rem;
+            text-align: center;
+            height: 100vh;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .image {
+                font-size: 3rem;
+            }
+
+            .product {
+                padding: 2rem;
+                /* height: 100%; */
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            .product {
+                height: 100%;
+            }
+            .product-card {
+                padding: 2rem;
+            }
+        }
+
+        @media only screen and (max-width: 400px) {
+            .product {
+                padding: 1rem;
+            }
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="product">
+        <div class="product-card">
+            <div class="image">{IMAGE}</div>
+            <h2>{NAME}</h2>
+            <div class="organic">{ORGANIC_OR_NOT}</div>
+            <div class="quantity">{QUANTITY} {NAME} per box.</div>
+            <div class="price">{PRICE}$</div>
+            <div>{DESC}</div>
+        </div>
+    </div>
+</body>
+
+</html>

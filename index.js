@@ -8,6 +8,7 @@ const data = JSON.parse(fs.readFileSync(`${__dirname}/data.json`, 'utf-8'));
 // Get the content of the file. Passing encoding is important.
 const overView = fs.readFileSync(`${__dirname}/overview.html`, 'utf-8');
 const cardTemplate = fs.readFileSync(`${__dirname}/card.html`, 'utf-8');
+const productTemplate = fs.readFileSync(`${__dirname}/product.html`, 'utf-8');
 
 // Replace the placeholder with actual data.
 const replaceContent = (cardTemplate, product) => {
@@ -19,7 +20,7 @@ const replaceContent = (cardTemplate, product) => {
     output = output.replace(/{QUANTITY}/g, product.quantity);
     output = output.replace(/{PRICE}/g, product.price);
     output = output.replace(/{URL}/g, `/product?id=${product.id}`);
-    // console.log(`/product?id=${product.id}`);
+    output = output.replace(/{DESC}/g, product.description);
     
     (!product.organic) ? output = output.replace(/{ORGANIC_OR_NOT}/g, 'Not Organic') : output = output.replace(/{ORGANIC_OR_NOT}/g, 'Organic');
     return output;
@@ -55,7 +56,7 @@ const server = http.createServer((req,res) => {
 
         const product = data[query.id];
 
-        const output = replaceContent(cardTemplate, product);
+        const output = replaceContent(productTemplate, product);
 
         res.end(output);
     }else if(pathname === '/api'){

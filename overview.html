@@ -16,7 +16,6 @@
         body {
             background-image: linear-gradient(rgba(138, 225, 101, 0.788), rgba(96, 247, 32, 0.788));
             background-repeat: no-repeat;
-            padding: 4rem;
             font-family: 'Raleway', sans-serif;
             line-height: 1.6;
             letter-spacing: 1px;
@@ -27,20 +26,20 @@
             flex-direction: column;
             height: 100vh;
             width: 80rem;
-            /* border: 1px solid red; */
             margin: 0 auto;
             text-align: center;
+            padding: 4rem;
         }
 
         .card {
             display: flex;
             border-radius: 1rem;
-            /* border: 1px solid rgba(128, 128, 128, 0.24); */
             transition: all 0.5s;
             min-width: 20rem;
             justify-content: space-around;
             background-color: white;
             margin-bottom: 2rem;
+            align-items: center;
         }
 
         h1 {
@@ -61,6 +60,7 @@
         .image {
             border-top-left-radius: 1rem;
             border-bottom-left-radius: 1rem;
+            font-size: 3rem;
         }
 
         .detail {
@@ -79,6 +79,35 @@
         .detail a {
             text-decoration: none;
             color: black;
+        }
+
+        @media only screen and (max-width: 1280px) {
+            .container {
+                width: 45rem;
+                height: 100%;
+            }
+
+            .card {
+                flex-direction: column;
+            }
+        }
+
+        @media only screen and (max-width: 768px) {
+            .container {
+                width: 25rem;
+                padding: 2rem;
+            }
+
+            .card > * {
+               padding: 1rem;
+            }
+        }
+
+        @media only screen and (max-width: 400px) {
+            .container {
+                width: 22rem;
+                padding: 1rem;
+            }
         }
 
     </style>
