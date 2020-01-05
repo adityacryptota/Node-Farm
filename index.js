@@ -1,5 +1,6 @@
 const fs = require('fs');
 const http = require('http');
+const url = require('url');
 
 // Get the data
 const data = JSON.parse(fs.readFileSync(`${__dirname}/data.json`, 'utf-8'));
@@ -17,7 +18,8 @@ const replaceContent = (cardTemplate, product) => {
     output = output.replace(/{IMAGE}/g, product.image);
     output = output.replace(/{QUANTITY}/g, product.quantity);
     output = output.replace(/{PRICE}/g, product.price);
-    output = output.replace(/{URL}/g, product.id);
+    output = output.replace(/{URL}/g, `/product?id=${product.id}`);
+    // console.log(`/product?id=${product.id}`);
     
     (!product.organic) ? output = output.replace(/{ORGANIC_OR_NOT}/g, 'Not Organic') : output = output.replace(/{ORGANIC_OR_NOT}/g, 'Organic');
     return output;
@@ -28,6 +30,8 @@ const replaceContent = (cardTemplate, product) => {
 const server = http.createServer((req,res) => {
     // Get the url
     let pathName = req.url;
+
+    // console.log(url.parse(req.url, true));
 
     // Routes
     if(pathName === '/overview' || pathName === '/'){
