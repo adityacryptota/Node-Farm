@@ -28,13 +28,13 @@ const replaceContent = (cardTemplate, product) => {
 
 
 const server = http.createServer((req,res) => {
-    // Get the url
-    let pathName = req.url;
+
+    const {query, pathname } = url.parse(req.url, true);
 
     // console.log(url.parse(req.url, true));
 
     // Routes
-    if(pathName === '/overview' || pathName === '/'){
+    if(pathname === '/overview' || pathname === '/'){
         // Send the header saying the content that server is going to send to the browser, is text/html. This is important.
         res.writeHead(200, {
             "Content-type": "text/html"
@@ -47,9 +47,18 @@ const server = http.createServer((req,res) => {
         // Send the overview page.
         res.end(mainPage);
 
-    }else if(pathName === '/product'){
-        res.end('This is the product page');
-    }else if(pathName === '/api'){
+    }else if(pathname === '/product'){
+
+        res.writeHead(200, {
+            "Content-type": "text/html"
+        })
+
+        const product = data[query.id];
+
+        const output = replaceContent(cardTemplate, product);
+
+        res.end(output);
+    }else if(pathname === '/api'){
         res.writeHead(200, {
             "Content-type": "application/json"
         });
