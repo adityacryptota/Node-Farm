@@ -40,7 +40,7 @@
         .product {
             padding: 4rem;
             text-align: center;
-            height: 100vh;
+            height: 100%;
             display:flex;
             justify-content: center;
             align-items: center;
@@ -69,6 +69,12 @@
         @media only screen and (max-width: 400px) {
             .product {
                 padding: 1rem;
+            }
+        }
+
+        @media only screen and (min-height: 685px) {
+            .product {
+                height: 100vh;
             }
         }
 
