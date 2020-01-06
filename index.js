@@ -26,8 +26,6 @@ const replaceContent = (cardTemplate, product) => {
     return output;
 }
 
-
-
 const server = http.createServer((req,res) => {
 
     const {query, pathname } = url.parse(req.url, true);
@@ -71,5 +69,7 @@ const server = http.createServer((req,res) => {
     res.end('Page not found');
 });
 
-server.listen(3000, () => console.log('Server has been started on port 3000'));
+const PORT = process.env.PORT || 3000;
+
+server.listen(PORT);
 
